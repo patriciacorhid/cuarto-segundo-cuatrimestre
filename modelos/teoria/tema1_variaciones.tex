@@ -365,16 +365,16 @@ Sea $f\in C(a,b)$ tal que $\integral{}{}{f\phi'(x)dx=0}\espacio\forall\phi\in\ma
 \begin{proof}
 Sea $x_0\in(a,b)$, por el lema \ref{existanciaphi}, podemos tomar $\phi_{x_0}\in \soportecompacto$, de forma que $\integral{a}{b}{\phi_{x_0}(s)ds}=1$ (multiplicándola por cierta constante). 
 
-Definimos $\Psi(x)=\integral{a}{x}{\phi_{x_0}(s)ds}$ y tomamos $c$ de forma que:
+Definimos $\Psi(x)=\integral{a}{x}{\phi_{x_0}(s)ds}$. Llamamos $c$ a:
 
 \[
-\integral{a}{b}{f(s)\Psi'(s)}=c\integral{a}{b}{\Psi'(s)ds}=c\Psi\Big|_a^b=c
+c=\integral{a}{b}{f(s)\Psi'(s)}
 \]
 
 Tomamos $\phi\in\soportecompacto$ y veamos que la función $\phi-\lambda\Psi'$ tiene primitiva para cierto $\lambda\in\R$. Supongamos que tiene media 0, y despejemos $\lambda$:
 
 \[
-\integral{a}{b}{\phi(s)-\lambda\Psi'(s)}=0 \Longrightarrow \lambda=\integral{a}{b}{\phi(s)ds}
+0=\integral{a}{b}{\phi(s)-\lambda\Psi'(s)ds}=\integral{a}{b}{\phi(s)ds}-\lambda\Psi\Big|_a^b \Longrightarrow \lambda=\integral{a}{b}{\phi(s)ds}
 \]
 
 Haciéndo esa elección de $\lambda$, $\phi-\lambda\Psi'$ tiene primitiva por el lema \ref{lemma:13}.
@@ -383,7 +383,7 @@ Haciéndo esa elección de $\lambda$, $\phi-\lambda\Psi'$ tiene primitiva por el
 0=\integral{a}{b}{f(s)(\phi(s)-\lambda\Psi'(s))ds}=\integral{a}{b}{f(s)\phi(s)ds}-\lambda\integral{a}{b}{f(s)\Psi'(s)ds}=
 \]
 \[
-=\integral{a}{b}{f(s)\phi(s)ds}-c\integral{a}{b}{\phi(s)ds}=\integral{a}{b}{(f(s)-c)\phi(s)ds} \Rightarrow f(s)-c=0 \Rightarrow f\equiv 0
+=\integral{a}{b}{f(s)\phi(s)ds}-c\integral{a}{b}{\phi(s)ds}=\integral{a}{b}{(f(s)-c)\phi(s)ds} \Rightarrow f(s)-c=0 \Rightarrow f\equiv c
 \]
 
 \end{proof}
@@ -402,7 +402,7 @@ Sean $f$,$g$ funciones continuas en $(a,b)$, entonces es equivalente:
 ($\Rightarrow$)Tomamos $x_0\in(a,b)$ y definimos $\tilde{f}(x)=\integral{a}{x}{g(s)ds}\Rightarrow \tilde{f}\in C^1$.
 
 \[
-\integral{a}{b}{\tilde{f}(s)\phi'(s)+g(s)\phi(s)ds}=\integral{a}{b}{\tilde{f}(s)\phi'(s)+\tilde{f}'(s)\phi(s)ds}=\integral{a}{b}{(\tilde{f}\phi)}=\tilde{f}\phi\Big|_a^b=0
+\integral{a}{b}{\tilde{f}(s)\phi'(s)+g(s)\phi(s)ds}=\integral{a}{b}{\tilde{f}(s)\phi'(s)+\tilde{f}'(s)\phi(s)ds}=\integral{a}{b}{(\tilde{f}\phi)'}=\tilde{f}\phi\Big|_a^b=0
 \]
 
 Restando la expresión de la hipótesis menos la anterior, obtenemos:
@@ -411,7 +411,7 @@ Restando la expresión de la hipótesis menos la anterior, obtenemos:
 0=\integral{a}{b}{f(s)\phi'(s)ds}-\integral{a}{b}{\tilde{f}(s)\phi'(s)ds}=\integral{a}{b}{(f-\tilde{f})(s)\phi'(s)ds}
 \]
 
-Y usnado el lema \ref{lemma:14}, tenemos que $f-\tilde{f}$ es constante, luego $f\in C^1$ ya que $\tilde{f}$ también pertenece a $C^1$.
+Y usando el lema \ref{lemma:14}, tenemos que $f-\tilde{f}$ es constante, luego $f\in C^1$ ya que $\tilde{f}$ también pertenece a $C^1$, y $f'=\tilde{f}'=g$.
 
 ($\Leftarrow$) 
 \[
@@ -428,9 +428,9 @@ A continuación veremos un ejemplo teórico y algunos ejemplos más prácticos d
 
 Este problema se centra principalmente en averiguar que forma (curva) tenemos que darle a un tobogán para que este sea el más rápido.
 
-A esa curva la vamos a denotar por $Y(t)$ y vamos a suponer que  pertenece a $C^1(0,L)$, es decir, que no tenga picos. Además, vamos a suponer que el tobogán tiene altura máximo 1, y mínima 0, es decir, $Y(0)=1$ e $Y(L)=0$. También necesitamos que el tobogán tenga sentido, es decir, que no tenga subidas ni bajadas muy bruscas, luego necesitamos imponer $Y'(x)<1 \espacio \forall x \in (0,L)$.
+A esa curva la vamos a denotar por $Y(x)$ y vamos a suponer que  pertenece a $C^1(0,L)$, es decir, que no tenga picos. Además, vamos a suponer que el tobogán tiene altura máxima 1, y mínima 0, es decir, $Y(0)=1$ e $Y(L)=0$. También necesitamos que el tobogán tenga sentido, es decir, que no nos quedemos atascados en medio, luego necesitamos imponer $Y(x)<1 \espacio \forall x \in (0,L)$.
 
-Recordemos primero algunas nociones de física. Vamos a denotar por $(x(t),y(t))$ a la posición de una persona en el tobogán en el instante $t\in[0,L]$, por $m$ a su masa y por $g$ a la gravedad. Recordemos que la expresión de la energía es $mgy(t)$, la de la velocidad es $v(t)=\sqrt{x'(t)^2+y'(t)^2}$ y la de la energía cinética es $\frac{mv(t)^2}{2}$.
+Recordemos primero algunas nociones de física. Vamos a denotar por $(x(t),y(t))$ a la posición de una persona en el tobogán en el instante $t$, por $m$ a su masa y por $g$ a la gravedad. Recordemos que la expresión de la energía es $mgy(t)$, la de la velocidad es $v(t)=\sqrt{x'(t)^2+y'(t)^2}$ y la de la energía cinética es $\frac{mv(t)^2}{2}$.
 
 Si hacemos el tobogán suficientemente suave, se tiene que verificar lo siguiente:
 
@@ -463,13 +463,13 @@ T=\frac{1}{\sqrt{2g}}\integral{0}{L}{\frac{\sqrt{1+Y'(x)^2}}{\sqrt{1-Y(x)}}dx}
 
 Definimos ahora el conjunto de funciones donde vamos a buscar nuestro mínimo:
 \[
-D=\{y\in C^1(0,L),y(0)=1,y(L)=0, y'(x)<1 \espacio \forall x \in(0,L)\}
+D=\{y\in C^1(0,L),y(0)=1,y(L)=0, y(x)<1 \espacio \forall x \in(0,L)\}
 \]
 
 Y definimos nuestro funcional:
 
 \[
-L_y=\integral{0}{L}{\frac{\sqrt{1+Y'(x)^2}}{\sqrt{1-Y(x)}}dx}
+Ly=\integral{0}{L}{\frac{\sqrt{1+Y'(x)^2}}{\sqrt{1-Y(x)}}dx}
 \]
 
 Usando la notación del principio, tenemos una función $F$ tal que $F(x,y,p)=\sqrt{\frac{1+p^2}{1-y}}$
@@ -480,14 +480,14 @@ Usando el Teorema \ref{theorem:12} podemos definir:
 Z(x)=\derivada{F}{p}(x,y,y')=\frac{1}{\sqrt{1-y(x)}}\frac{y'(x)}{\sqrt{1+y'(x)^2}} \in C^1(0,T)
 \]
 
-Ahora, en lugar de despejar $y'(x)$, vamos a ver que $y\in C^2$. Definiendo $\Psi(y')=\frac{y'}{\sqrt{1+y'^2}}=Z(x)\sqrt{1+y'^2}$. Como $\Psi(s)=\frac{s}{\sqrt{1+s^2}}$ tiene inversa de clase 1, tenemos:
+Ahora vamos a despejar $y'(x)$ para ver que $y\in C^2$. Definiendo $\Psi(y')=\frac{y'}{\sqrt{1+y'^2}}=Z(x)\sqrt{1-y}$. Como $\Psi(s)=\frac{s}{\sqrt{1+s^2}}$ tiene inversa de clase 1, tenemos:
 
 \[
 y'(x)=\Psi^{-1}(Z(x)\sqrt{1-y(x)})\Rightarrow y\in C^2
 \]
 
 En general, tenemos que si $F$ no depende de $x$, podemos hacer:
-\[D(x)=F(y,y')-Z(x)y'\Rightarrow D'(x)=\derivada{F}{y}(y,y')y'+\derivada{F}{p}(y,y')y''-Z'(x)y'-Z(x)y''=\]
+\[D(x)=F(y(x),y'(x))-Z(x)y'(x)\Rightarrow D'(x)=\derivada{F}{y}(y,y')y'+\derivada{F}{p}(y,y')y''-Z'(x)y'-Z(x)y''=\]
 \[
 =y'(Z'(x)-Z'(x))=0
 \]
@@ -500,7 +500,7 @@ F(y,y')-Z(x)y'=C
 En nuestro caso particular, nos quedaría:
 
 \[
-\frac{\sqrt{1+y'(x)^2}}{1-y(x)}-\frac{1}{\sqrt{1-y(x)}}\frac{y'(x)^2}{\sqrt{1+y'(x)^2}}=0 \Rightarrow \frac{1}{\sqrt{1-y(x)}}\frac{1}{\sqrt{1+y'(x)^2}}=C
+\sqrt{\frac{1+y'(x)^2}{1-y(x)}}-\frac{1}{\sqrt{1-y(x)}}\frac{y'(x)^2}{\sqrt{1+y'(x)^2}}= \frac{1}{\sqrt{1-y(x)}}\frac{1}{\sqrt{1+y'(x)^2}}=C
 \]
 
 Esa ecuación diferencial, es de variables separadas, deberíamos resolverla con las condiciones iniciales $y(0)=1,y(L)=0$, pero la solución es trascendente, es decir, no tiene expresión explícita, es un cicloide.
@@ -530,7 +530,7 @@ Definimos $F(x,y,p)=p^2-2xy$ y obtenemos:
 \]
 Resolviendo la ultima ecuación, obteniendo:
 \[
-Z(x)=-x^2+C \Rightarrow 2y'(x)=-x^2+C \Rightarrow y'(x)=\frac{-x^2+C}{2}\Rightarrow y(x)=-\frac{x^3}{6}+\frac{c}{2}x+D
+Z(x)=-x^2+C \Rightarrow 2y'(x)=-x^2+C \Rightarrow y'(x)=\frac{-x^2+C}{2}\Rightarrow y(x)=-\frac{x^3}{6}+\frac{C}{2}x+D
 \]
 
 Usando las condiciones de contorno, podemos calcular el valor de $C$ y $D$, obteniendo:
